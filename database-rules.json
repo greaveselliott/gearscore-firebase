@@ -1,0 +1,11 @@
+{
+  "rules": {
+    "flamelink": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "users": {
+        ".indexOn": ["email"]
+      }
+    }
+  }
+}
