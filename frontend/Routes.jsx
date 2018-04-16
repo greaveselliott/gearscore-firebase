@@ -24,8 +24,7 @@ import * as _ from 'lodash';
 import Layout from './components/layout';
 import ConditionalRedirect from './conditional-redirect';
 import Home from './components/home';
-import Post from './components/post';
-import Page from './components/page';
+import Login from './components/login';
 import NotFound from './components/404';
 
 
@@ -48,17 +47,29 @@ const PropsRoute = ({ component, ...rest }) => {
  * All the routes.
  */
 class Routes extends React.Component {
+
+  isAuth = false;
+
+  componentWillMount() {
+    // this.isAuth = !this.props.firebaseState.auth.isEmpty;
+  }
+
   render() {
+
     return (
       <Layout>
+        {/* Redirects */}
+        <Switch>
+          <ConditionalRedirect if={this.isAuth} exact from="/login" to="/"/>
+          <ConditionalRedirect if={!this.isAuth} exact from="/" to="/login"/>
+        </Switch>
+        {/* Content */}
         <Switch> 
           <Route exact path="/" component={Home}/> 
           <Route>
-          <Switch>
-            {
-              this.props.posts && _.map(this.props.posts, post => <PropsRoute key={post.id} path={_.get(post, 'seo.canonicalUrl', '/')} component={Post} id={post.id}/>)
-            }
-            <Route exact component={NotFound}/> 
+            <Switch>
+              <Route exact path="/login" component={Login}/> 
+              <Route exact component={NotFound}/> 
             </Switch> 
           </Route> 
         </Switch>
@@ -68,10 +79,8 @@ class Routes extends React.Component {
 }
 
 export default withRouter(compose(
-  firebaseConnect([
-    'flamelink/environments/production/content/blog/en-US'
-  ]),
+  firebaseConnect(),
   connect(state => ({
-    posts: _.get(state, 'firebaseState.data.flamelink.environments.production.content.blog.en-US', undefined),
+    isAuth: _.get(state, 'firebaseState.data.flamelink.environments.production.content.blog.en-US', undefined),
   }))
 )(Routes));
