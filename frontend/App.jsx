@@ -22,8 +22,8 @@ import preset from 'jss-preset-default';
 // Other.
 import { canUseDOM } from 'exenv';
 // Local.
-import { whenAuthReady, keepIdTokenInCookie } from './firebaseTools';
-import Routes from './Routes';
+import { whenAuthReady, keepIdTokenInCookie } from './firebase-tools';
+import Routes from './routes';
 
 /**
  * Loads the App in a server context.

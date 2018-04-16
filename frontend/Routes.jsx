@@ -22,7 +22,7 @@ import { compose } from 'redux';
 import * as _ from 'lodash';
 // Routes
 import Layout from './components/layout';
-import ConditionalRedirect from './ConditionalRedirect';
+import ConditionalRedirect from './conditional-redirect';
 import Home from './components/home';
 import Post from './components/post';
 import Page from './components/page';

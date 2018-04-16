@@ -7,7 +7,7 @@ import ReactDOMServer from 'react-dom/server';
 import * as _ from 'lodash';
 import App, { makeRegistry } from '../frontend/app';
 import makeStore from '../frontend/make-store';
-import firebaseTools, { whenAuthReady } from '../frontend/firebaseTools';
+import firebaseTools, { whenAuthReady } from '../frontend/firebase-tools';
 import express from 'express';
 import firebaseMiddleware from './firebase-express-middleware';
 import firebase from 'firebase';

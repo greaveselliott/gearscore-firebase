@@ -1,11 +1,11 @@
 {
   "status": "success",
   "result": {
-    "apiKey": "AIzaSyAKPFpSGtSgthnTtnlk1kIxbZBiOgRNv-0",
-    "databaseURL": "https://scuba-diver-expert.firebaseio.com",
-    "storageBucket": "scuba-diver-expert.appspot.com",
-    "authDomain": "scuba-diver-expert.firebaseapp.com",
-    "messagingSenderId": "121777976722",
-    "projectId": "scuba-diver-expert"
+    "apiKey": "AIzaSyCSK_sJ0IbmEjPdJqU62ZAF9APllmuJlQ0",
+    "databaseURL": "https://gearscore-firebase.firebaseio.com",
+    "storageBucket": "gearscore-firebase.appspot.com",
+    "authDomain": "gearscore-firebase.firebaseapp.com",
+    "messagingSenderId": "529931456904",
+    "projectId": "gearscore-firebase"
   }
 }

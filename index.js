@@ -42,5 +42,5 @@ if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === 'blurOffensiveIm
  * send the server-side markup to the client
  */
 if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === 'renderTemplate') {
-  exports.renderTemplate = require('./microservices/renderTemplate');
+  exports.renderTemplate = require('./microservices/render-template');
 }

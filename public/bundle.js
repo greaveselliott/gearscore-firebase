@@ -61575,9 +61575,9 @@ var _exenv = __webpack_require__(834);
 
 var _firebaseTools = __webpack_require__(835);
 
-var _Routes = __webpack_require__(837);
+var _routes = __webpack_require__(837);
 
-var _Routes2 = _interopRequireDefault(_Routes);
+var _routes2 = _interopRequireDefault(_routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -61645,7 +61645,7 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterRedux.ConnectedRouter,
           { history: this.props.history },
-          _react2.default.createElement(_Routes2.default, null)
+          _react2.default.createElement(_routes2.default, null)
         )
       )
     );
@@ -102422,9 +102422,9 @@ var _layout = __webpack_require__(838);
 
 var _layout2 = _interopRequireDefault(_layout);
 
-var _ConditionalRedirect = __webpack_require__(866);
+var _conditionalRedirect = __webpack_require__(866);
 
-var _ConditionalRedirect2 = _interopRequireDefault(_ConditionalRedirect);
+var _conditionalRedirect2 = _interopRequireDefault(_conditionalRedirect);
 
 var _home = __webpack_require__(867);
 
@@ -107900,12 +107900,12 @@ exports.default = FourOhFour;
 module.exports = {
 	"status": "success",
 	"result": {
-		"apiKey": "AIzaSyAKPFpSGtSgthnTtnlk1kIxbZBiOgRNv-0",
-		"databaseURL": "https://scuba-diver-expert.firebaseio.com",
-		"storageBucket": "scuba-diver-expert.appspot.com",
-		"authDomain": "scuba-diver-expert.firebaseapp.com",
-		"messagingSenderId": "121777976722",
-		"projectId": "scuba-diver-expert"
+		"apiKey": "AIzaSyCSK_sJ0IbmEjPdJqU62ZAF9APllmuJlQ0",
+		"databaseURL": "https://gearscore-firebase.firebaseio.com",
+		"storageBucket": "gearscore-firebase.appspot.com",
+		"authDomain": "gearscore-firebase.firebaseapp.com",
+		"messagingSenderId": "529931456904",
+		"projectId": "gearscore-firebase"
 	}
 };
 
