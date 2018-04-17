@@ -1,0 +1,43 @@
+[debug] [2018-04-17T23:40:55.036Z] ----------------------------------------------------------------------
+[debug] [2018-04-17T23:40:55.038Z] Command:       /Users/elliottgreaves/.nvm/versions/node/v8.9.4/bin/node /Users/elliottgreaves/Development/gearscore/gearscore-firebase/node_modules/.bin/firebase serve --only hosting,functions
+[debug] [2018-04-17T23:40:55.038Z] CLI Version:   3.17.6
+[debug] [2018-04-17T23:40:55.038Z] Platform:      darwin
+[debug] [2018-04-17T23:40:55.038Z] Node Version:  v8.9.4
+[debug] [2018-04-17T23:40:55.039Z] Time:          Wed Apr 18 2018 00:40:55 GMT+0100 (BST)
+[debug] [2018-04-17T23:40:55.039Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-17T23:40:55.051Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-17T23:40:55.051Z] > authorizing via signed-in user
+[debug] [2018-04-17T23:40:55.053Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gearscore-firebase  
+  
+ Wed Apr 18 2018 00:40:55 GMT+0100 (BST)
+[debug] [2018-04-17T23:40:55.765Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-17T23:40:55.766Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gearscore-firebase/tokens  
+  
+ Wed Apr 18 2018 00:40:55 GMT+0100 (BST)
+[debug] [2018-04-17T23:40:56.315Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-17T23:40:56.316Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/gearscore-firebase  
+  
+ Wed Apr 18 2018 00:40:56 GMT+0100 (BST)
+[debug] [2018-04-17T23:40:56.994Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/elliottgreaves/Development/gearscore/gearscore-firebase'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-04-17T23:40:58.902Z] Fetching environment
+[debug] [2018-04-17T23:40:58.905Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/529931456904:getServerAppConfig  
+  
+ Wed Apr 18 2018 00:40:58 GMT+0100 (BST)
+[debug] [2018-04-17T23:40:58.906Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/529931456904/clients/_:getWebAppConfig  
+  
+ Wed Apr 18 2018 00:40:58 GMT+0100 (BST)
+[debug] [2018-04-17T23:40:59.400Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-17T23:40:59.423Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-17T23:40:59.423Z] Starting @google-cloud/functions-emulator
+[info] i  hosting: Serving hosting files from: public
+[info] ✔  hosting: Local server: http://localhost:5000
+
+[debug] [2018-04-17T23:41:00.972Z] Parsing function triggers
+[info] ✔  functions: renderTemplate: http://localhost:5001/gearscore-firebase/us-central1/renderTemplate
+[info] [hosting] Rewriting /login to local function renderTemplate
+[info] [hosting] Rewriting /bundle.css to local function renderTemplate
