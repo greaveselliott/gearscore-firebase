@@ -19,6 +19,11 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
         }) : compose;
 
+    const rrfConfig = {
+        enableRedirectHandling: false,
+        userProfile: 'users'
+    };
+
     return createStore(
         combineReducers({
         //...reducers,
@@ -27,9 +32,9 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         }),
         initialState,
         composeEnhancers(
-        applyMiddleware(thunk.withExtraArgument(getFirebase)),
-        applyMiddleware(historyMiddleware),
-        reactReduxFirebase(firebaseApp, {enableRedirectHandling: false})
+            applyMiddleware(thunk.withExtraArgument(getFirebase)),
+            applyMiddleware(historyMiddleware),
+            reactReduxFirebase(firebaseApp, rrfConfig)
         )
     );
 }
