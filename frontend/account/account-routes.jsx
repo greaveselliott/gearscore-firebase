@@ -5,8 +5,9 @@ import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded, isEmpty, getVal } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Login, SignUp, ResetPassword, ForgottenUsername } from './';
+import ConditionalRedirect from '../conditional-redirect';
 
-const Routes = ({ match }) => (
+const Routes = ({ match, auth }) => (
     <Fragment>
         <ul>
             <li><Link to={`/`}>Home</Link></li>
@@ -16,6 +17,7 @@ const Routes = ({ match }) => (
             <li><Link to={`${match.url}/forgotten-username`}>Forgotten username</Link></li>
         </ul>
         <Switch>
+            <ConditionalRedirect if={!auth.uid} exact from="/account" to={`${match.url}/login`} />
             <Route path={`${match.url}/login`} component={Login} />
             <Route path={`${match.url}/sign-up`} component={SignUp} /> 
             <Route path={`${match.url}/reset-password`} component={ResetPassword} /> 
@@ -25,6 +27,8 @@ const Routes = ({ match }) => (
 );
 
 export default withRouter(compose(
-  firebaseConnect(),
-  connect(state => ({}))
-)(Routes));
+    firebaseConnect(),
+    connect(state => ({
+      auth: state.firebaseState.auth,
+    }))
+  )(Routes));

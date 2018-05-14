@@ -75518,7 +75518,8 @@ var PropsRoute = function PropsRoute(_ref) {
 };
 
 var Routes = function Routes(_ref2) {
-  var auth = _ref2.auth;
+  var firebase = _ref2.firebase,
+      auth = _ref2.auth;
   return _react2.default.createElement(
     _layout2.default,
     null,
@@ -75538,9 +75539,11 @@ var Routes = function Routes(_ref2) {
   );
 };
 
-exports.default = (0, _reactRouter.withRouter)((0, _redux.compose)((0, _reactReduxFirebase.firebaseConnect)(['firebaseState/auth/uid']), (0, _reactRedux.connect)(function (state) {
-  return { auth: state.firebaseState.auth };
-})))(Routes);
+exports.default = (0, _reactRouter.withRouter)((0, _redux.compose)((0, _reactReduxFirebase.firebaseConnect)(), (0, _reactRedux.connect)(function (state) {
+  return {
+    auth: state.firebaseState.auth
+  };
+}))(Routes));
 
 /***/ }),
 /* 667 */
@@ -77900,21 +77903,24 @@ var _logoutButton2 = _interopRequireDefault(_logoutButton);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
 var Navigation = function Navigation(_ref) {
-  _objectDestructuringEmpty(_ref);
-
+  var isAuth = _ref.isAuth;
   return _react2.default.createElement(
     'nav',
     null,
-    _react2.default.createElement(_logoutButton2.default, null)
+    isAuth ? _react2.default.createElement(_logoutButton2.default, null) : _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/account/login' },
+      'Login'
+    )
   );
 };
 
-exports.default = (0, _redux.compose)((0, _reactReduxFirebase.firebaseConnect)([]), (0, _reactRedux.connect)(function (state) {
-  return {};
-}))(Navigation);
+exports.default = (0, _reactRouterDom.withRouter)((0, _redux.compose)((0, _reactReduxFirebase.firebaseConnect)(), (0, _reactRedux.connect)(function (state) {
+  return {
+    isAuth: !state.firebaseState.auth.isEmpty
+  };
+}))(Navigation));
 
 /***/ }),
 /* 695 */
@@ -78086,10 +78092,15 @@ var _redux = __webpack_require__(22);
 
 var _ = __webpack_require__(169);
 
+var _conditionalRedirect = __webpack_require__(696);
+
+var _conditionalRedirect2 = _interopRequireDefault(_conditionalRedirect);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Routes = function Routes(_ref) {
-    var match = _ref.match;
+    var match = _ref.match,
+        auth = _ref.auth;
     return _react2.default.createElement(
         _react.Fragment,
         null,
@@ -78145,6 +78156,7 @@ var Routes = function Routes(_ref) {
         _react2.default.createElement(
             _reactRouter.Switch,
             null,
+            _react2.default.createElement(_conditionalRedirect2.default, { 'if': !auth.uid, exact: true, from: '/account', to: match.url + '/login' }),
             _react2.default.createElement(_reactRouter.Route, { path: match.url + '/login', component: _.Login }),
             _react2.default.createElement(_reactRouter.Route, { path: match.url + '/sign-up', component: _.SignUp }),
             _react2.default.createElement(_reactRouter.Route, { path: match.url + '/reset-password', component: _.ResetPassword }),
@@ -78154,7 +78166,9 @@ var Routes = function Routes(_ref) {
 };
 
 exports.default = (0, _reactRouter.withRouter)((0, _redux.compose)((0, _reactReduxFirebase.firebaseConnect)(), (0, _reactRedux.connect)(function (state) {
-    return {};
+    return {
+        auth: state.firebaseState.auth
+    };
 }))(Routes));
 
 /***/ }),
@@ -78181,7 +78195,7 @@ var _reactRedux = __webpack_require__(16);
 
 var _reactReduxFirebase = __webpack_require__(23);
 
-var _ = __webpack_require__(169);
+var _reactRouter = __webpack_require__(90);
 
 var _reactGoogleButton = __webpack_require__(699);
 
@@ -78196,23 +78210,23 @@ var LoginPage = exports.LoginPage = function LoginPage(_ref) {
     'div',
     { className: 'login' },
     _react2.default.createElement(_reactGoogleButton2.default, { onClick: function onClick() {
-        return firebase.login({ provider: 'google', type: 'popup' });
+        return login({ provider: 'google', type: 'popup' });
       } }),
     _react2.default.createElement(
       'div',
       null,
-      firebase.auth.isLoaded ? _react2.default.createElement(
+      auth.isLoaded ? _react2.default.createElement(
         'span',
         null,
         'Loading...'
-      ) : firebase.auth.isEmpty ? _react2.default.createElement(
+      ) : auth.isEmpty ? _react2.default.createElement(
         'span',
         null,
         'Not Authed'
       ) : _react2.default.createElement(
         'pre',
         null,
-        JSON.stringify(firebase.auth, null, 2)
+        JSON.stringify(auth, null, 2)
       )
     )
   );
@@ -78225,11 +78239,11 @@ LoginPage.propTypes = {
   })
 };
 
-exports.default = (0, _redux.compose)((0, _reactReduxFirebase.withFirebase)(LoginPage), (0, _reactRedux.connect)(function (state) {
+exports.default = (0, _reactRouter.withRouter)((0, _redux.compose)((0, _reactReduxFirebase.firebaseConnect)(), (0, _reactRedux.connect)(function (state) {
   return {
     auth: state.firebaseState.auth
   };
-}));
+}))(LoginPage));
 
 /***/ }),
 /* 699 */

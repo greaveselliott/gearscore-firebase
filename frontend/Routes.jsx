@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { firebaseConnect, isLoaded, isEmpty, getVal, withFirebase } from 'react-redux-firebase';
+import { firebaseConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'redux';
 // Routes
 import Layout from './components/layout';
@@ -27,7 +27,7 @@ const PropsRoute = ({ component, ...rest }) => {
   );
 }
 
-const Routes = ({ auth }) => (
+const Routes = ({ firebase, auth }) => (
   <Layout>
     {/* Redirects */}
     <Switch>
@@ -45,6 +45,8 @@ const Routes = ({ auth }) => (
 );
 
 export default withRouter(compose(
-  firebaseConnect(['firebaseState/auth/uid']), 
-  connect(state => ({ auth: state.firebaseState.auth })
-)))(Routes);
+  firebaseConnect(),
+  connect(state => ({
+    auth: state.firebaseState.auth,
+  }))
+)(Routes));

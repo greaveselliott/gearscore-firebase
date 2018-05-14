@@ -1,18 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import LogoutButton from '../account/logout-button';
 
-const Navigation = ({}) => (
+const Navigation = ({isAuth}) => (
   <nav>
-    <LogoutButton />
+    { isAuth ? <LogoutButton /> : <Link to='/account/login'>Login</Link> }
   </nav>
 );
 
 
-export default compose(
-  firebaseConnect([]),
-  connect(state => ({})),
-)(Navigation);
+export default withRouter(compose(
+  firebaseConnect(),
+  connect(state => ({
+    isAuth: !state.firebaseState.auth.isEmpty,
+  }))
+)(Navigation));
