@@ -19,7 +19,7 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
         }) : compose;
 
-    const rrfConfig = {
+    const config = {
         enableRedirectHandling: false,
         userProfile: 'users'
     };
@@ -34,7 +34,7 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         composeEnhancers(
             applyMiddleware(thunk.withExtraArgument(getFirebase)),
             applyMiddleware(historyMiddleware),
-            reactReduxFirebase(firebaseApp, rrfConfig)
+            reactReduxFirebase(firebaseApp, config)
         )
     );
 }

@@ -1,117 +1,48 @@
-[debug] [2018-05-13T22:56:14.855Z] ----------------------------------------------------------------------
-[debug] [2018-05-13T22:56:14.857Z] Command:       /Users/elliottgreaves/.nvm/versions/node/v8.9.4/bin/node /Users/elliottgreaves/Development/gearscore/gearscore-firebase/node_modules/.bin/firebase serve --only hosting,functions
-[debug] [2018-05-13T22:56:14.857Z] CLI Version:   3.17.6
-[debug] [2018-05-13T22:56:14.857Z] Platform:      darwin
-[debug] [2018-05-13T22:56:14.857Z] Node Version:  v8.9.4
-[debug] [2018-05-13T22:56:14.858Z] Time:          Sun May 13 2018 23:56:14 GMT+0100 (BST)
-[debug] [2018-05-13T22:56:14.858Z] ----------------------------------------------------------------------
+[debug] [2018-05-14T22:42:18.737Z] ----------------------------------------------------------------------
+[debug] [2018-05-14T22:42:18.739Z] Command:       /Users/elliottgreaves/.nvm/versions/node/v8.9.4/bin/node /Users/elliottgreaves/Development/gearscore/gearscore-firebase/node_modules/.bin/firebase serve --only hosting,functions
+[debug] [2018-05-14T22:42:18.739Z] CLI Version:   3.17.6
+[debug] [2018-05-14T22:42:18.739Z] Platform:      darwin
+[debug] [2018-05-14T22:42:18.739Z] Node Version:  v8.9.4
+[debug] [2018-05-14T22:42:18.740Z] Time:          Mon May 14 2018 23:42:18 GMT+0100 (BST)
+[debug] [2018-05-14T22:42:18.740Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-05-13T22:56:14.874Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-05-13T22:56:14.874Z] > authorizing via signed-in user
-[debug] [2018-05-13T22:56:14.877Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gearscore-firebase  
+[debug] [2018-05-14T22:42:18.754Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-05-14T22:42:18.754Z] > authorizing via signed-in user
+[debug] [2018-05-14T22:42:18.756Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/gearscore-firebase  
   
- Sun May 13 2018 23:56:14 GMT+0100 (BST)
-[debug] [2018-05-13T22:56:15.515Z] <<< HTTP RESPONSE 200
-[debug] [2018-05-13T22:56:15.516Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gearscore-firebase/tokens  
+ Mon May 14 2018 23:42:18 GMT+0100 (BST)
+[debug] [2018-05-14T22:42:19.402Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T22:42:19.403Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/gearscore-firebase/tokens  
   
- Sun May 13 2018 23:56:15 GMT+0100 (BST)
-[debug] [2018-05-13T22:56:16.122Z] <<< HTTP RESPONSE 200
-[debug] [2018-05-13T22:56:16.123Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/gearscore-firebase  
+ Mon May 14 2018 23:42:19 GMT+0100 (BST)
+[debug] [2018-05-14T22:42:20.127Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T22:42:20.129Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/gearscore-firebase  
   
- Sun May 13 2018 23:56:16 GMT+0100 (BST)
-[debug] [2018-05-13T22:56:16.832Z] <<< HTTP RESPONSE 200
+ Mon May 14 2018 23:42:20 GMT+0100 (BST)
+[debug] [2018-05-14T22:42:20.790Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/elliottgreaves/Development/gearscore/gearscore-firebase'...
 [info] 
 [info] i  functions: Preparing to emulate functions.
-[debug] [2018-05-13T22:56:18.650Z] Fetching environment
-[debug] [2018-05-13T22:56:18.652Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/529931456904:getServerAppConfig  
+[debug] [2018-05-14T22:42:21.720Z] Fetching environment
+[debug] [2018-05-14T22:42:21.724Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/529931456904:getServerAppConfig  
   
- Sun May 13 2018 23:56:18 GMT+0100 (BST)
-[debug] [2018-05-13T22:56:18.652Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/529931456904/clients/_:getWebAppConfig  
+ Mon May 14 2018 23:42:21 GMT+0100 (BST)
+[debug] [2018-05-14T22:42:21.724Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/529931456904/clients/_:getWebAppConfig  
   
- Sun May 13 2018 23:56:18 GMT+0100 (BST)
-[debug] [2018-05-13T22:56:19.136Z] <<< HTTP RESPONSE 200
-[debug] [2018-05-13T22:56:19.136Z] Starting @google-cloud/functions-emulator
-[debug] [2018-05-13T22:56:19.156Z] <<< HTTP RESPONSE 200
+ Mon May 14 2018 23:42:21 GMT+0100 (BST)
+[debug] [2018-05-14T22:42:22.146Z] <<< HTTP RESPONSE 200
 [info] i  hosting: Serving hosting files from: public
 [info] ✔  hosting: Local server: http://localhost:5000
 
-[debug] [2018-05-13T22:56:20.696Z] Parsing function triggers
-[info] [hosting] Rewriting /account to local function renderTemplate
+[debug] [2018-05-14T22:42:22.204Z] <<< HTTP RESPONSE 200
+[debug] [2018-05-14T22:42:22.204Z] Starting @google-cloud/functions-emulator
+[debug] [2018-05-14T22:42:23.752Z] Parsing function triggers
 [info] ✔  functions: renderTemplate: http://localhost:5001/gearscore-firebase/us-central1/renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
 [info] [hosting] Rewriting /account/login to local function renderTemplate
 [info] [hosting] Rewriting /favicon.ico to local function renderTemplate
 [info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account/ to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account/ to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account/login to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
 [info] [hosting] Rewriting /account/login to local function renderTemplate
 [info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
 [info] [hosting] Rewriting /account/login to local function renderTemplate
 [info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account/login to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /favicon.ico to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate
-[info] [hosting] Rewriting /bundle.css to local function renderTemplate
-[info] [hosting] Rewriting /account to local function renderTemplate

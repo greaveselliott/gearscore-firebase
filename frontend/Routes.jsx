@@ -2,9 +2,8 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { firebaseConnect, isLoaded, isEmpty, getVal } from 'react-redux-firebase';
+import { firebaseConnect, isLoaded, isEmpty, getVal, withFirebase } from 'react-redux-firebase';
 import { compose } from 'redux';
-import * as _ from 'lodash';
 // Routes
 import Layout from './components/layout';
 import ConditionalRedirect from './conditional-redirect';
@@ -28,40 +27,24 @@ const PropsRoute = ({ component, ...rest }) => {
   );
 }
 
-/**
- * All the routes.
- */
-class Routes extends React.Component {
-
-  isAuth = false;
-
-  componentWillMount() {
-    // this.isAuth = !this.props.firebaseState.auth.isEmpty;
-  }
-
-  render() {
-
-    return (
-      <Layout>
-        {/* Redirects */}
-        <Switch>
-          <ConditionalRedirect if={this.isAuth} from="/account" to="/"/>
-          <ConditionalRedirect if={!this.isAuth} from="/" to="/account"/>
-        </Switch>
-        {/* Content */}
-        <Switch> 
-          <Route exact path="/" component={Home}/> 
-          <Route path="/account" component={AccountRoutes}/> 
-          <Route exact component={NotFound}/> 
-        </Switch>
-      </Layout>
-    )
-  }
-}
+const Routes = ({ auth }) => (
+  <Layout>
+    {/* Redirects */}
+    <Switch>
+      <ConditionalRedirect if={auth.uid} from="/account" to="/"/>
+      <ConditionalRedirect if={!auth.uid} from="/" to="/account"/>
+    </Switch>
+    
+    {/* Content */}
+    <Switch> 
+      <Route exact path="/" component={Home}/> 
+      <Route path="/account" component={AccountRoutes}/> 
+      <Route exact component={NotFound}/> 
+    </Switch>
+  </Layout>
+);
 
 export default withRouter(compose(
-  firebaseConnect(),
-  connect(state => ({
-    isAuth: _.get(state, 'firebaseState.data.flamelink.environments.production.content.blog.en-US', undefined),
-  }))
-)(Routes));
+  firebaseConnect(['firebaseState/auth/uid']), 
+  connect(state => ({ auth: state.firebaseState.auth })
+)))(Routes);

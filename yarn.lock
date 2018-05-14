@@ -8614,6 +8614,12 @@ react-firebaseui@^1.0.5:
     firebaseui "^2.4.0"
     react "^15"
 
+react-google-button@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/react-google-button/-/react-google-button-0.5.3.tgz#d8c76328e51b55f2835a4ebe23817906dac6a4f8"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-hot-loader@4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-4.0.1.tgz#48284350ae5d7ba07dac872bd5bbc6e477352593"

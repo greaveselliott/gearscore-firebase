@@ -9,7 +9,7 @@ import { Login, SignUp, ResetPassword, ForgottenUsername } from './';
 const Routes = ({ match }) => (
     <Fragment>
         <ul>
-            <li><Link to={`${match.url}`}>Home</Link></li>
+            <li><Link to={`/`}>Home</Link></li>
             <li><Link to={`${match.url}/login`}>Login</Link></li>
             <li><Link to={`${match.url}/sign-up`}>Sign-up</Link></li>
             <li><Link to={`${match.url}/reset-password`}>Reset password</Link></li>
