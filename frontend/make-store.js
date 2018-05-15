@@ -2,6 +2,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase, firebaseStateReducer } from 'react-redux-firebase';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form'
 
 /**
  * Create a redux store.
@@ -26,7 +27,7 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
 
     return createStore(
         combineReducers({
-        //...reducers,
+        form: formReducer,
         router: routerReducer,
         firebaseState: firebaseStateReducer
         }),

@@ -5,19 +5,14 @@ import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { withRouter } from 'react-router';
 import GoogleButton from 'react-google-button';
+import LoginForm from './login-form';
 
-export const LoginPage = ({ firebase: { login }, auth }) => (
+export const LoginPage = ({ firebase, auth }) => (
   <div className="login">
-    <GoogleButton onClick={() => login({ provider: 'google', type: 'popup' })} />
-    <div>
-      {
-        auth.isLoaded ? <span>Loading...</span> : auth.isEmpty
-          ? <span>Not Authed</span>
-          : <pre>{JSON.stringify(auth, null, 2)}</pre>
-      }
-    </div>
+    <GoogleButton onClick={() => firebase.login({ provider: 'google', type: 'popup' })} />
+    <LoginForm />
   </div>
-)
+);
 
 LoginPage.propTypes = {
   firebase: PropTypes.shape({
