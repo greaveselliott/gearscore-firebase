@@ -36,40 +36,83 @@ router.use(firebaseMiddleware.auth({
   firebaseAdminApp: firebaseAdminApp
 }));
 
-router.get('*', (req, res) => {
-  const user = req.user || {};
-  getAuthenticatedFirebaseApp(user.uid, user.token).then(firebaseApp => {
-    // We make sure that the firebase auth state listeners are triggered again.
-    // Create the redux store.
-    const history = createMemoryHistory();
-    // Set the new URL.
-    history.replace(req.url);
-    const store = makeStore(history, firebaseApp);
-    const registry = makeRegistry();
-      
-    // Wait for auth to be ready.
-    whenAuthReady(store).then(() => {
-      const root = React.createElement(App, {registry, store, history});
-      const body = ReactDOMServer.renderToString(root);
-      const initialState = store.getState();
-      const css = registry.toString();
-      const lastUrl = initialState.router.location.pathname;
+const handleLoginWithEmail = (values) => {
+  return firebase.auth().signInWithEmailAndPassword(values.email, values.password)
+      .catch(error => {
+          var errorCode = error.code;
+          var errorMessage = error.message;
+      });
+};
 
-      if (lastUrl !== req.url) {
-        // If there has been a redirect we redirect server side.
-        console.log('Server side redirect to', lastUrl);
-        res.redirect(lastUrl);
-      } else {
-        // res.set('Cache-Control', 'public, max-age=60, s-maxage=180'); // TODO: make this change dependent on each URL. with a map maybe??
-        // If there was no redirect we send the rendered app as well as the redux state.
-        res.send(template({body, initialState, css, node_env: process.env.NODE_ENV}));
-      }
+router.post('/account/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  getAuthenticatedFirebaseApp().then(firebaseApp => {
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+      var model = appModelFactory(req, firebaseApp);
+      whenAuthReady(model.store).then(() => {
+        const state = model.store.getState();
+        const uid = state.firebaseState.auth.uid;
+        res.redirect(`/account/login?user=${uid}`);
+      });
+    })
+    .catch(error => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
     });
   }).catch(error => {
     console.log('There was an error', error);
     res.status(500).send(error);
   });
 });
+
+router.get('*', (req, res) => {
+  const user = req.user || {};
+
+  getAuthenticatedFirebaseApp(user.uid, user.token).then(firebaseApp => {
+    var model = appModelFactory(req, firebaseApp);
+    whenAuthReady(model.store).then(() => {
+      renderApplication(req, res, model);
+    });
+  }).catch(error => {
+    console.log('There was an error', error);
+    res.status(500).send(error);
+  });
+});
+
+const appModelFactory = (req, firebaseApp) => {
+  const history = createMemoryHistory();
+  history.replace(req.url);
+  const store = makeStore(history, firebaseApp);
+  const registry = makeRegistry();
+
+  return { history, store, registry, req };
+};
+
+const renderApplication = (req, res, model) => {
+  const view = React.createElement(App, {
+    history: model.history,
+    store: model.store,
+    registry: model.registry
+  });
+
+  const body = ReactDOMServer.renderToString(view);
+  const initialState = model.store.getState();
+  const css = model.registry.toString();
+  const lastUrl = initialState.router.location.pathname;
+
+  if (lastUrl !== model.req.url) {
+    // If there has been a redirect we redirect server side.
+    console.log('Server side redirect to', lastUrl);
+    res.redirect(lastUrl);
+  } else {
+    // res.set('Cache-Control', 'public, max-age=60, s-maxage=180'); // TODO: make this change dependent on each URL. with a map maybe??
+    // If there was no redirect we send the rendered app as well as the redux state.
+    res.send(template({body, initialState, css, node_env: process.env.NODE_ENV}));
+  }
+};
 
 /**
  * Helper function to get the markup from React, inject the initial state, and

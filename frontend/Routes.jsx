@@ -31,7 +31,7 @@ const Routes = ({ firebase, auth }) => (
   <Layout>
     {/* Redirects */}
     <Switch>
-      <ConditionalRedirect if={auth.uid} from="/account/login" to="/"/>
+      <ConditionalRedirect if={auth.uid} from="/account/" to="/"/>
       <ConditionalRedirect if={!auth.uid} from="/" to="/account"/>
     </Switch>
     
