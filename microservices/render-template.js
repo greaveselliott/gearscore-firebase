@@ -13,6 +13,7 @@ import firebaseMiddleware from './firebase-express-middleware';
 import firebase from 'firebase';
 import admin from 'firebase-admin';
 import history, { createMemoryHistory } from 'history';
+import cookieParser from 'cookie-parser';
 import getAuthenticatedFirebaseApp from './get-authenticated-firebase-app';
 
 // needed to fix "Error: The XMLHttpRequest compatibility library was not found." in Firebase client SDK.
@@ -20,62 +21,45 @@ global.XMLHttpRequest = XMLHttpRequest;
 
 const baseTemplate = fs.readFileSync(path.resolve(__dirname, './index.html'));
 const template = _.template(baseTemplate);
-const router = new express.Router();
+const app = new express();
 const serviceAccount = require('./service-account-credentials.json');
+const AUTH_COOKIE = '__service_account';
 const firebaseAdminApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
-}, '__service_account');
-
+}, AUTH_COOKIE);
 
 const cacheControlHeaderValues = {};
 
-// This Express middleware will check ig there is a Firebase ID token and inject
-router.use(firebaseMiddleware.auth({
+app.use(cookieParser());
+// This Express middleware will check if there is a Firebase ID token and inject
+app.use(firebaseMiddleware.auth({
   checkCookie: true,
   generateCustomToken: true,
   firebaseAdminApp: firebaseAdminApp
 }));
 
-const handleLoginWithEmail = (values) => {
-  return firebase.auth().signInWithEmailAndPassword(values.email, values.password)
-      .catch(error => {
-          var errorCode = error.code;
-          var errorMessage = error.message;
-      });
-};
-
-router.post('/account/login', (req, res) => {
-  const email = req.body.email;
-  const password = req.body.password;
-
-  getAuthenticatedFirebaseApp().then(firebaseApp => {
-    firebaseApp.auth().signInWithEmailAndPassword(email, password)
-    .then(() => {
-      var model = appModelFactory(req, firebaseApp);
-      whenAuthReady(model.store).then(() => {
-        const state = model.store.getState();
-        const uid = state.firebaseState.auth.uid;
-        res.redirect(`/account/login?user=${uid}`);
-      });
-    })
-    .catch(error => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-    });
-  }).catch(error => {
-    console.log('There was an error', error);
-    res.status(500).send(error);
-  });
-});
-
-router.get('*', (req, res) => {
+app.get('*', (req, res) => {
   const user = req.user || {};
+  const query = req.query;
+  res.cookie('test','cookie2', { maxAge: 900000, httpOnly: false});
 
   getAuthenticatedFirebaseApp(user.uid, user.token).then(firebaseApp => {
-    var model = appModelFactory(req, firebaseApp);
-    whenAuthReady(model.store).then(() => {
-      renderApplication(req, res, model);
-    });
+    if (query.email && query.password) {
+      firebaseApp.auth().signInWithEmailAndPassword(query.email, query.password)
+      .then(() => {
+        var model = appModelFactory(req, firebaseApp);
+        whenAuthReady(model.store).then(() => {
+          res.cookie('Set-Cookie', `${AUTH_COOKIE}=${model.store.getState().firebaseState.auth.stsTokenManager.accessToken}`, { maxAge: 900000, httpOnly: false});
+          renderApplication(req, res, model);
+        });
+      });
+    } else {
+      var model = appModelFactory(req, firebaseApp);
+      whenAuthReady(model.store).then(() => {
+        res.cookie('test','cookie', { maxAge: 900000, httpOnly: false});
+        renderApplication(req, res, model);
+      });
+    }
   }).catch(error => {
     console.log('There was an error', error);
     res.status(500).send(error);
@@ -103,7 +87,7 @@ const renderApplication = (req, res, model) => {
   const css = model.registry.toString();
   const lastUrl = initialState.router.location.pathname;
 
-  if (lastUrl !== model.req.url) {
+  if (lastUrl !== req.url) {
     // If there has been a redirect we redirect server side.
     console.log('Server side redirect to', lastUrl);
     res.redirect(lastUrl);
@@ -118,4 +102,4 @@ const renderApplication = (req, res, model) => {
  * Helper function to get the markup from React, inject the initial state, and
  * send the server-side markup to the client
  */
-exports = module.exports = https.onRequest(router);
+exports = module.exports = https.onRequest(app);

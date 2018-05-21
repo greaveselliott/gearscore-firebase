@@ -72477,11 +72477,22 @@ var makeStore = function makeStore(history, firebaseApp) {
         userProfile: 'users'
     };
 
-    return (0, _redux.createStore)((0, _redux.combineReducers)({
+    var reducers = (0, _redux.combineReducers)({
         form: _reduxForm.reducer,
         router: _reactRouterRedux.routerReducer,
         firebaseState: _reactReduxFirebase.firebaseStateReducer
-    }), initialState, composeEnhancers((0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(_reactReduxFirebase.getFirebase)), (0, _redux.applyMiddleware)(historyMiddleware), (0, _reactReduxFirebase.reactReduxFirebase)(firebaseApp, config)));
+    });
+
+    var enhancers = composeEnhancers((0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(_reactReduxFirebase.getFirebase)), (0, _redux.applyMiddleware)(historyMiddleware), (0, _reactReduxFirebase.reactReduxFirebase)(firebaseApp, config));
+
+    var store = '';
+    try {
+        store = (0, _redux.createStore)(reducers, initialState, enhancers);
+    } catch (e) {
+        console.log(e);
+    }
+
+    return store;
 };
 
 exports.default = makeStore;
@@ -87843,16 +87854,16 @@ function whenAuthReady(store) {
     return firebaseState && firebaseState.auth && firebaseState.auth.isLoaded;
   };
 
-  return new Promise(function (accept) {
+  return new Promise(function (resolve) {
     if (isAuthReady(store)) {
       console.log('Redux store Firebase auth state is ready!');
-      return accept();
+      return resolve();
     }
     var unsubscribe = store.subscribe(function () {
       if (isAuthReady(store)) {
         console.log('Redux store Firebase auth state is ready!');
         unsubscribe();
-        accept();
+        return resolve();
       }
     });
   });
@@ -91101,7 +91112,7 @@ var LoginForm = function LoginForm(_ref) {
 
     return _react2.default.createElement(
         'form',
-        { action: '/account/login', onSubmit: handleSubmit(handleLoginWithEmail) },
+        { method: 'get', action: '/account/login', onSubmit: handleSubmit(handleLoginWithEmail) },
         _react2.default.createElement(
             'div',
             null,

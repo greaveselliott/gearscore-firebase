@@ -16,7 +16,7 @@ const LoginForm = ({ handleSubmit, firebase }) => {
     };
 
     return (
-        <form action="/account/login" onSubmit={handleSubmit(handleLoginWithEmail)}>
+        <form method="get" action="/account/login" onSubmit={handleSubmit(handleLoginWithEmail)}>
             <div>
                 <label htmlFor="email">Email</label>
                 <Field name="email" component="input" type="text" />

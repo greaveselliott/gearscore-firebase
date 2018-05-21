@@ -70,16 +70,16 @@ export function whenAuthReady(store, firebaseReducerAttributeName = 'firebaseSta
     return firebaseState && firebaseState.auth && firebaseState.auth.isLoaded;
   };
 
-  return new Promise(accept => {
+  return new Promise(resolve => {
     if (isAuthReady(store)) {
       console.log('Redux store Firebase auth state is ready!');
-      return accept();
+      return resolve();
     }
     let unsubscribe = store.subscribe(() => {
       if (isAuthReady(store)) {
         console.log('Redux store Firebase auth state is ready!');
         unsubscribe();
-        accept();
+        return resolve();
       }
     });
   });

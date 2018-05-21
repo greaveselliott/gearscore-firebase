@@ -25,19 +25,30 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         userProfile: 'users'
     };
 
-    return createStore(
-        combineReducers({
+    const reducers = combineReducers({
         form: formReducer,
         router: routerReducer,
         firebaseState: firebaseStateReducer
-        }),
-        initialState,
-        composeEnhancers(
-            applyMiddleware(thunk.withExtraArgument(getFirebase)),
-            applyMiddleware(historyMiddleware),
-            reactReduxFirebase(firebaseApp, config)
-        )
+    });
+
+    const enhancers = composeEnhancers(
+        applyMiddleware(thunk.withExtraArgument(getFirebase)),
+        applyMiddleware(historyMiddleware),
+        reactReduxFirebase(firebaseApp, config)
     );
+
+    let store = '';
+    try {
+        store = createStore(
+            reducers,
+            initialState,
+            enhancers
+        );
+    } catch (e) {
+        console.log(e);
+    }
+
+    return store;
 }
 
 export default makeStore;
