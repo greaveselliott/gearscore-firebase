@@ -21,8 +21,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
   context: __dirname,
-
-  entry: './frontend/App.jsx',
+  entry: './frontend/base/components/App.jsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, './public')

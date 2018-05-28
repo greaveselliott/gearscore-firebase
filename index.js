@@ -22,22 +22,6 @@ if (!process.env.FUNCTION_NAME || process.env.NODE_ENV === 'devserver') {
 }
 
 /**
- * Triggers when a user gets a new follower and sends notifications if the user has enabled them.
- * Also avoids sending multiple notifications for the same user by keeping a timestamp of sent notifications.
- */
-if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === 'sendFollowerNotification') {
-  exports.sendFollowerNotification = require('./microservices/sendFollowerNotification');
-}
-
-/**
- * When an image is uploaded we check if it is flagged as Adult or Violence by the Cloud Vision
- * API and if it is we blur it using ImageMagick.
- */
-if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === 'blurOffensiveImages') {
-  exports.blurOffensiveImages = require('./microservices/blurOffensiveImages');
-}
-
-/**
  * Helper function to get the markup from React, inject the initial state, and
  * send the server-side markup to the client
  */

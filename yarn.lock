@@ -1742,10 +1742,6 @@ brorand@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
 
-browser-image-resizer@^1.1.2:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/browser-image-resizer/-/browser-image-resizer-1.1.4.tgz#c9b15f30ec9b2b037eb9c89e512885e2ebd15524"
-
 browser-process-hrtime@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-0.1.2.tgz#425d68a58d3447f02a04aa894187fce8af8b7b8e"
@@ -2338,10 +2334,6 @@ component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
 
-compose-then@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/compose-then/-/compose-then-1.0.1.tgz#35638ac1cac0c3321dc276a822270562d6ebf3a5"
-
 compress-commons@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/compress-commons/-/compress-commons-1.2.2.tgz#524a9f10903f3a813389b0225d27c48bb751890f"
@@ -2495,13 +2487,6 @@ content-type@~1.0.4:
 convert-source-map@^1.1.0, convert-source-map@^1.4.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.5.0.tgz#9acd70851c6d5dfdd93d9282e5edf94a03ff46b5"
-
-cookie-parser@^1.4.3:
-  version "1.4.3"
-  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.3.tgz#0fe31fa19d000b95f4aadf1f53fdc2b8a203baa5"
-  dependencies:
-    cookie "0.3.1"
-    cookie-signature "1.0.6"
 
 cookie-signature@1.0.6:
   version "1.0.6"
@@ -4215,7 +4200,7 @@ firebase@2.x.x:
   dependencies:
     faye-websocket ">=0.6.0"
 
-firebase@^4.1.5, firebase@^4.3.1, firebase@^4.8.0:
+firebase@^4.1.5, firebase@^4.8.0:
   version "4.11.0"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-4.11.0.tgz#e6767df3f6e208b0c58ef53130609392b765df99"
   dependencies:
@@ -4235,17 +4220,6 @@ firebaseui@^2.3.0, firebaseui@^2.4.0:
   dependencies:
     dialog-polyfill "^0.4.7"
     firebase "^4.8.0"
-
-flamelink@^0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/flamelink/-/flamelink-0.14.1.tgz#10be9963490705b9d297163581ba5f4f5c346a6e"
-  dependencies:
-    browser-image-resizer "^1.1.2"
-    compose-then "^1.0.1"
-    firebase "^4.3.1"
-    lodash "^4.17.4"
-    regenerator-runtime "^0.11.0"
-    validate.js "^0.12.0"
 
 flat-arguments@^1.0.0:
   version "1.0.2"
@@ -10570,10 +10544,6 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "~1.0.0"
     spdx-expression-parse "~1.0.0"
-
-validate.js@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/validate.js/-/validate.js-0.12.0.tgz#17f989e37c192ea2f826bbf19bf4e97e6e4be68f"
 
 value-equal@^0.2.0:
   version "0.2.1"

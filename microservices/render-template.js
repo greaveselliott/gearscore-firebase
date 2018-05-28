@@ -5,7 +5,7 @@ import fs from 'fs';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as _ from 'lodash';
-import App, { makeRegistry } from '../frontend/app';
+import App, { makeRegistry } from '../frontend/app/app';
 import makeStore from '../frontend/make-store';
 import firebaseTools, { whenAuthReady } from '../frontend/firebase-tools';
 import express from 'express';
@@ -13,7 +13,6 @@ import firebaseMiddleware from './firebase-express-middleware';
 import firebase from 'firebase';
 import admin from 'firebase-admin';
 import history, { createMemoryHistory } from 'history';
-import cookieParser from 'cookie-parser';
 import getAuthenticatedFirebaseApp from './get-authenticated-firebase-app';
 
 // needed to fix "Error: The XMLHttpRequest compatibility library was not found." in Firebase client SDK.
@@ -30,7 +29,6 @@ const firebaseAdminApp = admin.initializeApp({
 
 const cacheControlHeaderValues = {};
 
-app.use(cookieParser());
 // This Express middleware will check if there is a Firebase ID token and inject
 app.use(firebaseMiddleware.auth({
   checkCookie: true,
@@ -41,25 +39,12 @@ app.use(firebaseMiddleware.auth({
 app.get('*', (req, res) => {
   const user = req.user || {};
   const query = req.query;
-  res.cookie('test','cookie2', { maxAge: 900000, httpOnly: false});
 
   getAuthenticatedFirebaseApp(user.uid, user.token).then(firebaseApp => {
-    if (query.email && query.password) {
-      firebaseApp.auth().signInWithEmailAndPassword(query.email, query.password)
-      .then(() => {
-        var model = appModelFactory(req, firebaseApp);
-        whenAuthReady(model.store).then(() => {
-          res.cookie('Set-Cookie', `${AUTH_COOKIE}=${model.store.getState().firebaseState.auth.stsTokenManager.accessToken}`, { maxAge: 900000, httpOnly: false});
-          renderApplication(req, res, model);
-        });
-      });
-    } else {
       var model = appModelFactory(req, firebaseApp);
       whenAuthReady(model.store).then(() => {
-        res.cookie('test','cookie', { maxAge: 900000, httpOnly: false});
         renderApplication(req, res, model);
       });
-    }
   }).catch(error => {
     console.log('There was an error', error);
     res.status(500).send(error);
