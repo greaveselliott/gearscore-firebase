@@ -10,18 +10,18 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase, firebaseStateReducer } from 'react-redux-firebase';
 // Router.
-import makeStore from './make-store';
+import { makeStore } from '../../../config';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 // JSS.
-import { SheetsRegistry } from 'react-jss/lib/jss';
 import JssProvider from 'react-jss/lib/JssProvider';
 import { create } from 'jss';
 import preset from 'jss-preset-default';
+import { SheetsRegistry } from 'react-jss/lib/jss';
 // Other.
 import { canUseDOM } from 'exenv';
 // Local.
-import { whenAuthReady, keepIdTokenInCookie } from './firebase-tools';
+import { whenAuthReady, keepIdTokenInCookie } from '../../../config/firebase/firebase-tools';
 import Routes from './routes';
 
 /**
@@ -50,9 +50,6 @@ export default class App extends React.Component {
     }
   }
 
-  /**
-   * @inheritDoc
-   */
   render() {
     return (
       <JssProvider registry={this.props.registry} jss={this.jss}>
@@ -66,19 +63,10 @@ export default class App extends React.Component {
   }
 }
 
-/**
- * Create a Jss Registry.
- *
- * @return {Object} - The Jss Registry.
- */
-export function makeRegistry() {
-  return new SheetsRegistry();
-}
-
 // On the client, display the app.
 if (canUseDOM) {
   // Get the Firebase config from the auto generated file.
-  const firebaseConfig = require('./firebase-config.json').result;
+  const firebaseConfig = require('../../../config/firebase/firebase-config.json').result;
 
   // Instantiate a Firebase app.
   const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -86,7 +74,7 @@ if (canUseDOM) {
   // Keep the Firebase ID Token and the __session cookie in sync.
   keepIdTokenInCookie(firebaseApp, '__session');
 
-  const registry = makeRegistry();
+  const registry = new SheetsRegistry();
   const history = createBrowserHistory();
   const store = makeStore(history, firebaseApp, window.__REDUX_STATE__);
   

@@ -5,18 +5,18 @@ import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded } from 'react-redux-firebase';
 import { compose } from 'redux';
 // Routes
-import Layout from './components/layout';
-import Redirects from './react-router-redux-redirect/redirect';
-import { AccountRoutes } from './account';
-import Home from './components/home';
-import NotFound from './components/404';
+import Layout from './layout';
+import Redirects from '../../react-router-redux-redirect';
+import { AccountRoutes } from '../../account';
+import Home from '../../home';
+import NotFound from './404';
 
 const Routes = ({ firebase, auth }) => (
   <Layout>
     {/* Redirects */}
     <Switch>
-      <ConditionalRedirect if={auth.uid} from="/account/" to="/"/>
-      <ConditionalRedirect if={!auth.uid} from="/" to="/account"/>
+      <Redirects if={auth.uid} from="/account/" to="/"/>
+      <Redirects if={!auth.uid} from="/" to="/account"/>
     </Switch>
     
     {/* Content */}

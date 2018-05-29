@@ -5,9 +5,10 @@ import fs from 'fs';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as _ from 'lodash';
-import App, { makeRegistry } from '../frontend/app/app';
-import makeStore from '../frontend/make-store';
-import firebaseTools, { whenAuthReady } from '../frontend/firebase-tools';
+import { App } from '../frontend/base/components/app';
+import { SheetsRegistry } from 'react-jss/lib/jss';
+import makeStore from '../config/redux/make-store';
+import firebaseTools, { whenAuthReady } from '../config/firebase/firebase-tools';
 import express from 'express';
 import firebaseMiddleware from './firebase-express-middleware';
 import firebase from 'firebase';
@@ -21,7 +22,7 @@ global.XMLHttpRequest = XMLHttpRequest;
 const baseTemplate = fs.readFileSync(path.resolve(__dirname, './index.html'));
 const template = _.template(baseTemplate);
 const app = new express();
-const serviceAccount = require('./service-account-credentials.json');
+const serviceAccount = require('../config/firebase/service-account-credentials.json');
 const AUTH_COOKIE = '__service_account';
 const firebaseAdminApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
@@ -55,7 +56,7 @@ const appModelFactory = (req, firebaseApp) => {
   const history = createMemoryHistory();
   history.replace(req.url);
   const store = makeStore(history, firebaseApp);
-  const registry = makeRegistry();
+  const registry = new SheetsRegistry();
 
   return { history, store, registry, req };
 };
