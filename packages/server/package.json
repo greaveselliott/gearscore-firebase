@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "@firebase-app/server",
   "version": "1.0.0",
   "main": "render-template.js",
   "license": "MIT",

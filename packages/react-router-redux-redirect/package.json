@@ -1,5 +1,5 @@
 {
-  "name": "react-router-redux-redirect",
+  "name": "@firebase-app/react-router-redux-redirect",
   "version": "1.0.0",
   "description": "A react-router-redux compatible Redirect with additional conditional",
   "main": "redirect.js",
