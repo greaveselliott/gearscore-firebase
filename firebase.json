@@ -6,8 +6,8 @@
     "rules": "storage.rules"
   },
   "functions": {
-    "source": "./",
-    "exclude": ["public", "node_modules"]
+    "source": "./node_modules/@firebase-app/cloud-functions",
+    "exclude": [""]
   },
   "hosting": {
     "public": "public",

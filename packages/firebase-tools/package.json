@@ -1,0 +1,9 @@
+{
+  "name": "@firebase-app/firebase-tools",
+  "version": "1.0.0",
+  "main": "firebase-tools.js",
+  "license": "MIT",
+  "dependencies": {
+    "js-cookie": "^2.2.0"
+  }
+}

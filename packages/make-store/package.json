@@ -1,0 +1,13 @@
+{
+  "name": "@firebase-app/make-store",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-redux-firebase": "^2.1.4",
+    "react-router-redux": "^4.0.8",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.3.0"
+  }
+}

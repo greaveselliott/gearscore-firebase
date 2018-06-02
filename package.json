@@ -6,7 +6,7 @@
     "build": "npm run createfirebaseconf; npm run cleanup; NODE_ENV=production webpack -p; babel $(find frontend -type f -iname *.jsx) -s --retain-lines -d ./",
     "build:dev": "npm run createfirebaseconf; npm run cleanup; webpack -d",
     "build:watch": "npm run createfirebaseconf; npm run cleanup; webpack --watch",
-    "createfirebaseconf": "firebase setup:web --json > ./frontend/firebase-config.json",
+    "createfirebaseconf": "firebase setup:web --json > ./config/firebase-config.json",
     "serve": "GCLOUD_PROJECT=- NODE_ENV=devserver npm run build:watch",
     "format": "prettier --write --single-quote --print-width=120 --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",

@@ -26,5 +26,5 @@ if (!process.env.FUNCTION_NAME || process.env.NODE_ENV === 'devserver') {
  * send the server-side markup to the client
  */
 if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === 'renderTemplate') {
-  exports.renderTemplate = require('./microservices/render-template');
+  exports.renderTemplate = require('render-template');
 }
