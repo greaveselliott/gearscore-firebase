@@ -115,5 +115,7 @@
     "style-loader": "^0.18.2",
     "webpack": "^3.5.5",
     "webpack-shell-plugin": "^0.5.0"
-  }
+  },
+  "private": true,
+  "workspaces": ["packages/*"]
 }
