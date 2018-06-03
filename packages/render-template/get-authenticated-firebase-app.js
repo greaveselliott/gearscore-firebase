@@ -1,6 +1,5 @@
 import firebase, { app, initializeApp } from 'firebase';
-const firebaseConfig = require('../frontend/firebase-config.json').result;
-
+import { firebaseConfig } from '@firebase-app/config';
 /**
  * Returns a Firebase App instance
  *

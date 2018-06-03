@@ -21,10 +21,10 @@ if (!process.env.FUNCTION_NAME || process.env.NODE_ENV === 'devserver') {
   require('babel-register');
 }
 
-/**
+/** 
  * Helper function to get the markup from React, inject the initial state, and
  * send the server-side markup to the client
  */
 if (!process.env.FUNCTION_NAME || process.env.FUNCTION_NAME === 'renderTemplate') {
-  exports.renderTemplate = require('render-template');
+  exports.renderTemplate = require('@firebase-app/render-template');
 }

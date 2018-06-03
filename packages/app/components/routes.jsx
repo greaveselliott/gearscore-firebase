@@ -7,7 +7,7 @@ import { compose } from 'redux';
 // Routes
 import Layout from './layout';
 // import Redirects from '../../react-router-redux-redirect';
-import { AccountRoutes } from '../../account';
+import { AccountRoutes } from '@firebase-app/account';
 import Home from '../../home';
 import NotFound from './404';
 

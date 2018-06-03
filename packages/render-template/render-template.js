@@ -5,7 +5,7 @@ import fs from 'fs';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as _ from 'lodash';
-import { App } from '../frontend/base';
+import { App } from '@firebase-app/app';
 import { SheetsRegistry } from 'react-jss/lib/jss';
 import { makeStore } from '../config';
 import { whenAuthReady } from '../config/firebase/firebase-tools';
@@ -15,6 +15,7 @@ import firebase from 'firebase';
 import admin from 'firebase-admin';
 import history, { createMemoryHistory } from 'history';
 import getAuthenticatedFirebaseApp from './get-authenticated-firebase-app';
+import { serviceAccount } from '@firebase-app/config';
 
 // needed to fix "Error: The XMLHttpRequest compatibility library was not found." in Firebase client SDK.
 global.XMLHttpRequest = XMLHttpRequest;
@@ -22,7 +23,6 @@ global.XMLHttpRequest = XMLHttpRequest;
 const baseTemplate = fs.readFileSync(path.resolve(__dirname, './index.html'));
 const template = _.template(baseTemplate);
 const app = new express();
-const serviceAccount = require('../config/firebase/service-account-credentials.json');
 
 const firebaseAdminApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)

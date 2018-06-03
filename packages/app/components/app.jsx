@@ -10,7 +10,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase, firebaseStateReducer } from 'react-redux-firebase';
 // Router.
-import { makeStore } from '../../../config';
+import { makeStore } from '@firebase-app/make-store';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 // JSS.
@@ -21,7 +21,8 @@ import { SheetsRegistry } from 'react-jss/lib/jss';
 // Other.
 import { canUseDOM } from 'exenv';
 // Local.
-import { whenAuthReady, keepIdTokenInCookie } from '../../../config/firebase/firebase-tools';
+import { whenAuthReady, keepIdTokenInCookie } from '@firebase-app/firebase-tools';
+import { firebaseConfig } from '@firebase-app/config';
 import Routes from './routes';
 
 /**
@@ -65,11 +66,8 @@ export default class App extends React.Component {
 
 // On the client, display the app.
 if (canUseDOM) {
-  // Get the Firebase config from the auto generated file.
-  const firebaseConfig = require('../../../config/firebase/firebase-config.json').result;
-
   // Instantiate a Firebase app.
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
+  const firebaseApp = firebase.initializeApp(firebaseConfig.result);
 
   // Keep the Firebase ID Token and the __session cookie in sync.
   keepIdTokenInCookie(firebaseApp, '__session');

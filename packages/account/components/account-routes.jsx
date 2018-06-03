@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect, isLoaded, isEmpty, getVal } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Login, SignUp, ResetPassword, ForgottenUsername } from '../';
-import Redirect from '../../react-router-redux-redirect/redirect';
+import Redirect from '@firebase-app/react-router-redux-redirect';
 
 const Routes = ({ match, auth }) => (
     <Fragment>

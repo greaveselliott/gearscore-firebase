@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
-import { LogoutButton } from '../../account';
+import { LogoutButton } from '@firebase-app/account';
 
 const Navigation = ({isAuth}) => (
   <nav>

@@ -6,8 +6,5 @@
   "dependencies": {
     "react": "^16.4.0",
     "react-redux": "^5.0.7"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }
