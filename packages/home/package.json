@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "yarn": "yarn"
+  },
   "dependencies": {
     "react": "^16.4.0",
     "react-redux": "^5.0.7"

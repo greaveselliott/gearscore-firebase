@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "main": "index.jsx",
   "license": "MIT",
+  "scripts": {
+    "yarn": "yarn"
+  },
   "dependencies": {
     "js-cookie": "^2.2.0"
   }

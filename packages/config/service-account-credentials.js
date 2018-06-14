@@ -1,4 +1,4 @@
-{
+export default {
   "type": "service_account",
   "project_id": "gearscore-firebase",
   "private_key_id": "020755118816a0db60d5c6bf8397bd015a1a1ca2",
@@ -9,4 +9,4 @@
   "token_uri": "https://accounts.google.com/o/oauth2/token",
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-kpwjh%40gearscore-firebase.iam.gserviceaccount.com"
-}
+};

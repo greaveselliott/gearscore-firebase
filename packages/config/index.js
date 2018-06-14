@@ -1,2 +1,2 @@
-exports.firebaseConfig = require('./firebase-config.json');
-exports.serviceAccount = require('./service-account-credentials.json');
+export { default as firebaseConfig } from './firebase-config';
+export { default as serviceAccount }  from './service-account-credentials';

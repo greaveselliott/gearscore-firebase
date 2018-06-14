@@ -2,18 +2,17 @@ import { XMLHttpRequest } from 'xmlhttprequest';
 import { https } from 'firebase-functions';
 import path from 'path';
 import fs from 'fs';
-import React from 'react';
+import React, { createElement } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as _ from 'lodash';
 import { App } from '@firebase-app/app';
 import { SheetsRegistry } from 'react-jss/lib/jss';
-import { makeStore } from '../config';
-import { whenAuthReady } from '../config/firebase/firebase-tools';
+import makeStore from '@firebase-app/make-store';
+import { whenAuthReady } from '@firebase-app/firebase-tools';
 import express from 'express';
 import firebaseMiddleware from './firebase-express-middleware';
-import firebase from 'firebase';
 import admin from 'firebase-admin';
-import history, { createMemoryHistory } from 'history';
+import { createMemoryHistory } from 'history';
 import getAuthenticatedFirebaseApp from './get-authenticated-firebase-app';
 import { serviceAccount } from '@firebase-app/config';
 
@@ -62,7 +61,7 @@ const appModelFactory = (req, firebaseApp) => {
 };
 
 const renderApplication = (req, res, model) => {
-  const view = React.createElement(App, {
+  const view = createElement(App, {
     history: model.history,
     store: model.store,
     registry: model.registry
@@ -71,17 +70,17 @@ const renderApplication = (req, res, model) => {
   const body = ReactDOMServer.renderToString(view);
   const initialState = model.store.getState();
   const css = model.registry.toString();
-  const lastUrl = initialState.router.location.pathname;
+  /*const lastUrl = initialState.router.location.pathname;
 
   if (lastUrl !== req.url) {
     // If there has been a redirect we redirect server side.
     console.log('Server side redirect to', lastUrl);
     res.redirect(lastUrl);
-  } else {
+  } else {*/
     // res.set('Cache-Control', 'public, max-age=60, s-maxage=180'); // TODO: make this change dependent on each URL. with a map maybe??
     // If there was no redirect we send the rendered app as well as the redux state.
     res.send(template({body, initialState, css, node_env: process.env.NODE_ENV}));
-  }
+ // }
 };
 
 /**

@@ -4,6 +4,9 @@
   "description": "A react-router-redux compatible Redirect with additional conditional",
   "main": "redirect.js",
   "license": "Apache 2.0",
+  "scripts": {
+    "yarn": "yarn"
+  },
   "dependencies": {
     "react": "^16.4.0",
     "react-redux": "^5.0.7",

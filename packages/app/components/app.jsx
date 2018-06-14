@@ -8,7 +8,6 @@ import 'firebase/auth';
 import { Provider } from 'react-redux';
 
 // Router.
-import { makeStore } from '@firebase-app/make-store';
 import { createBrowserHistory } from 'history';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 // JSS.
@@ -65,14 +64,16 @@ export default class App extends React.Component {
 // On the client, display the app.
 if (canUseDOM) {
   // Instantiate a Firebase app.
-  const firebaseApp = firebase.initializeApp(firebaseConfig.result);
+  const firebaseApp = firebase.initializeApp(firebaseConfig);
 
   // Keep the Firebase ID Token and the __session cookie in sync.
   keepIdTokenInCookie(firebaseApp, '__session');
 
   const registry = new SheetsRegistry();
   const history = createBrowserHistory();
-  const store = makeStore(history, firebaseApp, window.__REDUX_STATE__);
+  // const store = makeStore(history, firebaseApp, window.__REDUX_STATE__);
+  
+  const store = {};
   
   whenAuthReady(store).then(() => {
     // Render the app.

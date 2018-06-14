@@ -3,6 +3,9 @@
   "version": "1.0.1",
   "main": "render-template.js",
   "license": "MIT",
+  "scripts": {
+    "yarn": "yarn"
+  },
   "dependencies": {
     "cookie": "^0.3.1",
     "firebase": "^5.0.4",
@@ -12,7 +15,7 @@
     "history": "^4.7.2",
     "lodash": "^4.17.10",
     "path": "^0.12.7",
-    "react": "^16.4.0",
+    "react": "^16.4.1",
     "react-dom": "^16.4.0",
     "xmlhttprequest": "^1.8.0"
   }
