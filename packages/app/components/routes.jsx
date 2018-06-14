@@ -8,7 +8,7 @@ import { compose } from 'redux';
 import Layout from './layout';
 // import Redirects from '../../react-router-redux-redirect';
 import { AccountRoutes } from '@firebase-app/account';
-import Home from '../../home';
+import { Home } from '@firebase-app/home';
 import NotFound from './404';
 
 const Routes = ({ firebase, auth }) => (

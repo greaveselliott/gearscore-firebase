@@ -1,65 +1,24 @@
-// React core.
 import React from 'react';
 import ReactDOM from 'react-dom';
-// Firebase.
 import firebase from 'firebase/app';
 import 'firebase/auth';
-// Redux.
 import { Provider } from 'react-redux';
-
-// Router.
 import { createBrowserHistory } from 'history';
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
-// JSS.
-import JssProvider from 'react-jss/lib/JssProvider';
-import { create } from 'jss';
-import preset from 'jss-preset-default';
-import { SheetsRegistry } from 'react-jss/lib/jss';
-// Other.
+import { ConnectedRouter } from 'react-router-redux';
 import { canUseDOM } from 'exenv';
-// Local.
 import { whenAuthReady, keepIdTokenInCookie } from '@firebase-app/firebase-tools';
 import { firebaseConfig } from '@firebase-app/config';
 import Routes from './routes';
 
-/**
- * Loads the App in a server context.
- *
- * This takes care of setting up JSS, the Theme, Redux and the Router.
- */
-export default class App extends React.Component {
-
-  constructor(props) {
-    super(props);
-
-    // Create a theme instance.
-    this.theme =  {};
-
-    // Configure JSS
-    this.jss = create(preset());
-    //this.jss.options.createGenerateClassName = createGenerateClassName;
-  }
-
-  componentDidMount() {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.getElementById('jss-server-side');
-    if (jssStyles && jssStyles.parentNode) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
-  }
-
-  render() {
-    return (
-      <JssProvider registry={this.props.registry} jss={this.jss}>
-          <Provider store={this.props.store}>
-            <ConnectedRouter history={this.props.history}>
-              <Routes/>
-            </ConnectedRouter>
-          </Provider>
-      </JssProvider>
-    );
-  }
-}
+const App = ({store, history}) => (
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <Routes/>
+    </ConnectedRouter>
+  </Provider>
+);
+      
+export default App;
 
 // On the client, display the app.
 if (canUseDOM) {

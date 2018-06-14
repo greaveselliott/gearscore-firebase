@@ -2,7 +2,7 @@ import { XMLHttpRequest } from 'xmlhttprequest';
 import { https } from 'firebase-functions';
 import path from 'path';
 import fs from 'fs';
-import React, { createElement } from 'react';
+import { createElement } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import * as _ from 'lodash';
 import { App } from '@firebase-app/app';
@@ -44,6 +44,9 @@ app.get('*', (req, res) => {
       var model = appModelFactory(req, firebaseApp);
       whenAuthReady(model.store).then(() => {
         renderApplication(req, res, model);
+      }).catch(error => {
+        console.log('There was an error', error);
+        res.status(500).send(error);
       });
   }).catch(error => {
     console.log('There was an error', error);
