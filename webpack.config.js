@@ -39,16 +39,9 @@ const config = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-        exclude: /node_modules/
-      },
-      {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
-        include: [path.resolve('frontend'), path.resolve('node_modules/preact-compat/src')],
         query: {
           babelrc: false,
           presets: [

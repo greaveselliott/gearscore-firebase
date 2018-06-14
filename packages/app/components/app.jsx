@@ -6,9 +6,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 // Redux.
 import { Provider } from 'react-redux';
-import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { reactReduxFirebase, getFirebase, firebaseStateReducer } from 'react-redux-firebase';
+
 // Router.
 import { makeStore } from '@firebase-app/make-store';
 import { createBrowserHistory } from 'history';

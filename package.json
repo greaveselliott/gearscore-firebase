@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "cleanup": "for file in $(find packages/app public -type f -iname *.map 2>/dev/null); do rm $file ${file%.*}; done",
-    "build": "npm run createfirebaseconf; npm run cleanup; NODE_ENV=production webpack -p; babel $(find packages/app -type f -iname *.jsx) -s --retain-lines -d ./",
+    "build": "npm run createfirebaseconf; npm run cleanup; NODE_ENV=production webpack -p; babel $(find packages/app -type f -iname *.jsx) --plugins syntax-jsx -s --retain-lines -d ./",
     "build:dev": "npm run createfirebaseconf; npm run cleanup; webpack -d",
     "build:watch": "npm run createfirebaseconf; npm run cleanup; webpack --watch",
     "createfirebaseconf": "firebase setup:web --json > ./packages/config/firebase-config.json",
@@ -24,6 +24,7 @@
     "babel-plugin-css-modules-transform": "^1.2.7",
     "babel-plugin-dynamic-import-node": "1.0.2",
     "babel-plugin-syntax-dynamic-import": "6.18.0",
+    "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-class-properties": "6.24.1",
     "babel-plugin-transform-decorators": "^6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "6.24.1",
@@ -69,5 +70,7 @@
     "webpack-shell-plugin": "^0.5.0"
   },
   "private": true,
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }
