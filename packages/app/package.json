@@ -1,17 +1,14 @@
 {
   "name": "@firebase-app/base",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "index.jsx",
   "author": "Elliott Greaves",
   "license": "ISC",
   "dependencies": {
-    "@firebase-app/account": "^1.0.0",
-    "@firebase-app/firebase-tools": "^1.0.0",
-    "@firebase-app/make-store": "^1.0.0",
+    "@firebase-app/account": "^1.0.1",
+    "@firebase-app/firebase-tools": "^1.0.1",
+    "@firebase-app/make-store": "^1.0.1",
     "exenv": "^1.2.2",
     "firebase": "^4.1.5",
     "firebase-admin": "^5.11.0",

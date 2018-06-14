@@ -1,6 +1,6 @@
 {
   "name": "@firebase-app/render-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "render-template.js",
   "license": "MIT",
   "dependencies": {

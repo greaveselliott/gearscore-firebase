@@ -1,10 +1,10 @@
 {
   "name": "@firebase-app/cloud-functions",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@firebase-app/render-template": "^1.0.0"
+    "@firebase-app/render-template": "^1.0.1"
   },
   "devDependencies": {
     "babel-register": "^6.26.0"
