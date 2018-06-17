@@ -1,7 +1,8 @@
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { reactReduxFirebase, getFirebase, firebaseStateReducer } from 'react-redux-firebase';
-import { routerReducer, routerMiddleware } from 'react-router-redux';
+// import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { reducer as formReducer } from 'redux-form';
 
 
@@ -26,9 +27,8 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         userProfile: 'users'
     };
 
-    const reducers = combineReducers({
+    const rootReducer = combineReducers({
         form: formReducer,
-        router: routerReducer,
         firebaseState: firebaseStateReducer
     });
 
@@ -38,18 +38,11 @@ const makeStore = (history, firebaseApp, initialState = {}) => {
         reactReduxFirebase(firebaseApp, config)
     );
 
-    let store = '';
-    try {
-        store = createStore(
-            reducers,
-            initialState,
-            enhancers
-        );
-    } catch (e) {
-        console.log(e);
-    }
-
-    return store;
+    return createStore(
+        connectRouter(historyMiddleware)(rootReducer),
+        initialState,
+        enhancers
+    );
 }
 
 export default makeStore;
