@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Provider } from 'react-redux';
 import { createBrowserHistory } from 'history';
-import { ConnectedRouter } from 'react-router-redux';
 import { canUseDOM } from 'exenv';
 import { whenAuthReady, keepIdTokenInCookie } from '@firebase-app/firebase-tools';
 import { firebaseConfig } from '@firebase-app/config';
+import makeStore from '@firebase-app/make-store';
+import { ConnectedRouter } from 'connected-react-router';
 import Routes from './routes';
 
 const App = ({store, history}) => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <Routes/>
-    </ConnectedRouter>
-  </Provider>
+    <div>
+      <Provider store={store}>
+        <ConnectedRouter location='/' action='x' history={history}>
+          <Routes />
+        </ConnectedRouter>
+      </Provider>
+    </div>
 );
       
 export default App;
@@ -28,14 +31,11 @@ if (canUseDOM) {
   // Keep the Firebase ID Token and the __session cookie in sync.
   keepIdTokenInCookie(firebaseApp, '__session');
 
-  const registry = new SheetsRegistry();
   const history = createBrowserHistory();
-  // const store = makeStore(history, firebaseApp, window.__REDUX_STATE__);
-  
-  const store = {};
+  const store = makeStore(history, firebaseApp, window.__REDUX_STATE__);
   
   whenAuthReady(store).then(() => {
     // Render the app.
-      ReactDOM.render(<App registry={registry} store={store} history={history}/>, document.getElementById('app'));
+      // ReactDOM.hydrate(<App store={store} history={history}/>, document.getElementById('app'));
   });
 }

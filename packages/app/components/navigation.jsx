@@ -11,10 +11,12 @@ const Navigation = ({isAuth}) => (
   </nav>
 );
 
+export default Navigation;
 
-export default withRouter(compose(
-  firebaseConnect(),
-  connect(state => ({
-    isAuth: !state.firebaseState.auth.isEmpty,
-  }))
-)(Navigation));
+
+// export default withRouter(compose(
+//   firebaseConnect(),
+//   connect(state => ({
+//     isAuth: !state.firebaseState.auth.isEmpty,
+//   }))
+// )(Navigation));

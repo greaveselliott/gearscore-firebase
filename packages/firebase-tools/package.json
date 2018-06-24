@@ -7,6 +7,10 @@
     "yarn": "yarn"
   },
   "dependencies": {
-    "js-cookie": "^2.2.0"
+    "app": "^0.1.0",
+    "history": "^4.7.2",
+    "js-cookie": "^2.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-redux": "^4.0.8"
   }
 }

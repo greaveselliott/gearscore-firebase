@@ -27,8 +27,6 @@ const firebaseAdminApp = admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 }, '__service_account');
 
-const cacheControlHeaderValues = {};
-
 // This Express middleware will check if there is a Firebase ID token and inject
 app.use(firebaseMiddleware.auth({
   checkCookie: true,
@@ -38,15 +36,11 @@ app.use(firebaseMiddleware.auth({
 
 app.get('*', (req, res) => {
   const user = req.user || {};
-  const query = req.query;
 
   getAuthenticatedFirebaseApp(user.uid, user.token).then(firebaseApp => {
       var model = appModelFactory(req, firebaseApp);
       whenAuthReady(model.store).then(() => {
         renderApplication(req, res, model);
-      }).catch(error => {
-        console.log('There was an error', error);
-        res.status(500).send(error);
       });
   }).catch(error => {
     console.log('There was an error', error);
@@ -73,17 +67,14 @@ const renderApplication = (req, res, model) => {
   const body = ReactDOMServer.renderToString(view);
   const initialState = model.store.getState();
   const css = model.registry.toString();
-  /*const lastUrl = initialState.router.location.pathname;
+  const lastUrl = req.originalUrl
 
   if (lastUrl !== req.url) {
-    // If there has been a redirect we redirect server side.
     console.log('Server side redirect to', lastUrl);
     res.redirect(lastUrl);
-  } else {*/
-    // res.set('Cache-Control', 'public, max-age=60, s-maxage=180'); // TODO: make this change dependent on each URL. with a map maybe??
-    // If there was no redirect we send the rendered app as well as the redux state.
+  } else {
     res.send(template({body, initialState, css, node_env: process.env.NODE_ENV}));
- // }
+  }
 };
 
 /**

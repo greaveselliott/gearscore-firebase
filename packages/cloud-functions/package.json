@@ -5,7 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "@firebase-app/render-template": "^1.0.1",
-    "firebase-functions": "^1.0.4"
+    "app": "^0.1.0",
+    "firebase-functions": "^1.0.4",
+    "history": "^4.7.2",
+    "react-redux": "^5.0.7",
+    "react-router-redux": "^4.0.8"
   },
   "devDependencies": {
     "babel-register": "^6.26.0"

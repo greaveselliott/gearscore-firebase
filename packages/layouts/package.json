@@ -1,0 +1,13 @@
+{
+    "name": "@firebase-app/layouts",
+    "version": "1.0.1",
+    "main": "index.jsx",
+    "license": "MIT",
+    "scripts": {
+      "yarn": "yarn"
+    },
+    "dependencies": {
+      "react": "^16.4.1"
+    }
+  }
+  

@@ -5,5 +5,11 @@
   "license": "MIT",
   "scripts": {
     "yarn": "yarn"
+  },
+  "dependencies": {
+    "app": "^0.1.0",
+    "history": "^4.7.2",
+    "react-redux": "^5.0.7",
+    "react-router-redux": "^4.0.8"
   }
 }

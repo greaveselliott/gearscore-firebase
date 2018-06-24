@@ -7,6 +7,7 @@
     "yarn": "yarn"
   },
   "dependencies": {
+    "app": "^0.1.0",
     "cookie": "^0.3.1",
     "firebase": "^5.0.4",
     "firebase-admin": "^5.12.1",
@@ -17,6 +18,8 @@
     "path": "^0.12.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-redux": "^4.0.8",
     "xmlhttprequest": "^1.8.0"
   }
 }
