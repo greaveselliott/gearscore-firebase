@@ -77,8 +77,4 @@ const renderApplication = (req, res, model) => {
   }
 };
 
-/**
- * Helper function to get the markup from React, inject the initial state, and
- * send the server-side markup to the client
- */
-exports = module.exports = https.onRequest(app);
+export default https.onRequest(app);

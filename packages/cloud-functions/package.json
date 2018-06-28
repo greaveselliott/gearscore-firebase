@@ -13,5 +13,8 @@
   },
   "devDependencies": {
     "babel-register": "^6.26.0"
+  },
+  "scripts": {
+    "yarn": "yarn"
   }
 }
