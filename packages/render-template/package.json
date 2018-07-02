@@ -4,6 +4,7 @@
   "main": "render-template.js",
   "license": "MIT",
   "scripts": {
+    "build": "webpack --mode production --config webpack.config.js",
     "yarn": "yarn"
   },
   "dependencies": {
@@ -21,5 +22,11 @@
     "react-redux": "^5.0.7",
     "react-router-redux": "^4.0.8",
     "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
   }
 }

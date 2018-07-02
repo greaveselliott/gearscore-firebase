@@ -1,13 +1,22 @@
 {
-    "name": "@firebase-app/layouts",
-    "version": "1.0.1",
-    "main": "index.jsx",
-    "license": "MIT",
-    "scripts": {
-      "yarn": "yarn"
-    },
-    "dependencies": {
-      "react": "^16.4.1"
-    }
+  "name": "@firebase-app/layouts",
+  "version": "1.0.1",
+  "main": "./build/index.js",
+  "license": "MIT",
+  "scripts": {
+    "yarn": "yarn"
+  },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.1.6",
+    "redux": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.14.0"
   }
-  
+}

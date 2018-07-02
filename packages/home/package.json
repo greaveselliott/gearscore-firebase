@@ -1,7 +1,7 @@
 {
   "name": "@firebase-app/home",
   "version": "1.0.1",
-  "main": "index.js",
+  "main": "./build/index.js",
   "license": "MIT",
   "scripts": {
     "yarn": "yarn"
@@ -12,5 +12,12 @@
     "react": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-router-redux": "^4.0.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.14.0"
   }
 }

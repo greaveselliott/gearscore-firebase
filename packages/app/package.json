@@ -2,32 +2,22 @@
   "name": "@firebase-app/app",
   "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "./build/index.js",
   "author": "Elliott Greaves",
   "license": "ISC",
   "scripts": {
+    "build": "webpack --mode production --config webpack.config.js",
     "yarn": "yarn"
   },
   "dependencies": {
     "app": "^0.1.0",
-    "babel-plugin-css-modules-transform": "^1.2.7",
     "connected-react-router": "^4.3.0",
-    "css-loader": "^0.28.5",
-    "eslint": "^4.2.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-react": "^7.1.0",
-    "eslint-plugin-standard": "^3.0.1",
     "exenv": "^1.2.2",
     "firebase": "^4.1.5",
     "firebase-admin": "^5.11.0",
     "firebase-functions": "^0.8.2",
     "firebase-tools": "^3.12.0",
     "history": "^4.7.2",
-    "jest": "^22.4.3",
-    "jss": "^9.8.3",
-    "jss-preset-default": "^4.5.0",
-    "postcss": "^6.0.9",
-    "postcss-loader": "^2.0.6",
     "react": "^16.4.0",
     "react-dom": "^16.4.1",
     "react-jss": "^8.5.1",
@@ -35,10 +25,17 @@
     "react-redux-firebase": "^2.1.5",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.0",
-    "webpack": "^3.5.5"
+    "redux": "^4.0.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "jest": "^22.4.3",
+    "webpack": "^4.13.0"
   }
 }

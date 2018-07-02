@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 
-import { AccountRoutes } from '@firebase-app/account';
+// import { AccountRoutes } from '@firebase-app/account';
 import { Home } from '@firebase-app/home';
-import NotFound from './404';
+import NotFound from './404.jsx';
 
 const Routes = ({ firebase, auth }) => (
     <Switch> 

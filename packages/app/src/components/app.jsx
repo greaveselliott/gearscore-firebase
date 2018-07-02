@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { Provider } from 'react-redux';
@@ -9,7 +8,7 @@ import { whenAuthReady, keepIdTokenInCookie } from '@firebase-app/firebase-tools
 import { firebaseConfig } from '@firebase-app/config';
 import makeStore from '@firebase-app/make-store';
 import { ConnectedRouter } from 'connected-react-router';
-import Routes from './routes';
+import Routes from './routes.jsx';
 
 const App = ({store, history}) => (
     <div>
