@@ -1,7 +1,7 @@
 {
   "name": "@firebase-app/cloud-functions",
   "version": "1.0.1",
-  "main": "index.js",
+  "main": "./src/index.js",
   "license": "MIT",
   "dependencies": {
     "@firebase-app/render-template": "^1.0.1",

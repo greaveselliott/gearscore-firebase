@@ -1,16 +1,3 @@
 {
-  "presets": [
-    "react",
-    ["env", {
-      "targets": { "node": "6.11" },
-      "loose": true,
-      "modules": "commonjs"
-    }]
-  ],
-  "plugins": [
-    "transform-decorators",
-    "transform-class-properties",
-    "transform-object-rest-spread",
-    ["css-modules-transform", {"generateScopedName": "[name]__[local]___[hash:base64:5]"}]
-  ]
+  "presets": ["env", "react"]
 }

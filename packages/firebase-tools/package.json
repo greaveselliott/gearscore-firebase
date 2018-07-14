@@ -1,7 +1,7 @@
 {
   "name": "@firebase-app/firebase-tools",
   "version": "1.0.1",
-  "main": "index.jsx",
+  "main": "./src/index.js",
   "license": "MIT",
   "scripts": {
     "yarn": "yarn"
@@ -10,6 +10,7 @@
     "app": "^0.1.0",
     "history": "^4.7.2",
     "js-cookie": "^2.2.0",
+    "redux": "^4.0.0",
     "react-redux": "^5.0.7",
     "react-router-redux": "^4.0.8"
   }
