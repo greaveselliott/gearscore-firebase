@@ -1,7 +1,7 @@
 const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const { readdirSync } = require('fs')
-
+const { webpack: lernaAliases } = require('lerna-alias')
 
 const PACKAGE_PATH = './packages';
 
@@ -23,16 +23,20 @@ module.exports = {
     entry: getEntryConfiguration({ packagesPath: PACKAGE_PATH }),
     output: {
         path: path.join(__dirname, ''),
-        filename: `${PACKAGE_PATH}/[name]/build/[name].bundle.js`
+        filename: `${PACKAGE_PATH}/[name]/build/index.bundle.js`
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.json'],
+        extensions: ['.js', '.jsx', '.json'], 
+        modules: ['node_modules'],
+        alias: lernaAliases(),
     },
     externals: [
-        'child_process',
-        'fs',
-        'net',
-        'tls'
+        'firebase-admin',
+        'firebase-functions',
+        'xmlhttprequest',
+        'express',
+        'fs'
+        
     ],
     module: {
         rules: [

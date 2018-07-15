@@ -2,7 +2,7 @@
   "name": "@firebase-app/react-router-redux-redirect",
   "version": "1.0.1",
   "description": "A react-router-redux compatible Redirect with additional conditional",
-  "main": "./src/index.js",
+  "main": "./build/index.bundle.js",
   "license": "Apache 2.0",
   "scripts": {
     "yarn": "yarn"

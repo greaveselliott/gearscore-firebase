@@ -1,7 +1,7 @@
 {
   "name": "@firebase-app/firebase-tools",
   "version": "1.0.1",
-  "main": "./src/index.js",
+  "main": "./build/index.bundle.js",
   "license": "MIT",
   "scripts": {
     "yarn": "yarn"

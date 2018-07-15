@@ -1,7 +1,7 @@
 {
   "name": "@firebase-app/layouts",
   "version": "1.0.1",
-  "main": "./src/index.js",
+  "main": "./src/index.bundle.js",
   "license": "MIT",
   "scripts": {
     "yarn": "yarn"

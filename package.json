@@ -2,6 +2,7 @@
   "name": "test",
   "version": "0.0.1",
   "scripts": {
+    "delete-build-directory": "for package in ./packages/*; do rm -rf ${package}/build; done;",
     "cleanup": "for file in $(find packages/app public -type f -iname *.map 2>/dev/null); do rm $file ${file%.*}; done",
     "build": "npm run createfirebaseconf; npm run cleanup; NODE_ENV=production webpack -p; babel $(find packages/app -type f -iname *.jsx) --plugins syntax-jsx -s --retain-lines -d ./",
     "build:dev": "npm run createfirebaseconf; npm run cleanup; webpack -d",
@@ -21,6 +22,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "lerna": "^2.11.0",
+    "lerna-alias": "^3.0.2",
     "progress-bar-webpack-plugin": "^1.11.0",
     "webpack": "^4.14.0"
   },

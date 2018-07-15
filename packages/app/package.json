@@ -2,7 +2,7 @@
   "name": "@firebase-app/app",
   "version": "1.0.1",
   "description": "",
-  "main": "./src/index.js",
+  "main": "./build/index.bundle.js",
   "author": "Elliott Greaves",
   "license": "ISC",
   "scripts": {
